@@ -9,7 +9,11 @@ to transform all the stored timestamp from string to data :
 //on mongo shell : 
 
 var cursor = db.newBlogMessage.find()
+
 while (cursor.hasNext()) {
+
 var doc = cursor.next();
+
 db.newBlogMessage.update({_id : doc._id}, {$set : {timestamp : new Date(doc.timestamp)}})
+
 }
